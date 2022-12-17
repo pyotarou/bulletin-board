@@ -35,7 +35,6 @@ export const CreateThread = () => {
 	)
 }
 
-
 const SContainer = styled.div`
 	width: 100%;
 	max-width:500px;

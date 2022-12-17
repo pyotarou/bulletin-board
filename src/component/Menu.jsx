@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Menu = () => {
+export const Menu = () => {
   return (
     <>
       <SContainer>
-        <SService>掲示板</SService>
+        <h1><Sa href='/'>掲示板</Sa></h1>
         <SCreateThread href='/thread/new'>スレッドをたてる</SCreateThread>
       </SContainer>
     </>
@@ -20,14 +20,12 @@ const SContainer = styled.div`
   align-items: center;
 `
 
-const SService = styled.h1`
+const Sa = styled.a`
   color: white;
+  text-decoration: none;
 `
 
 const SCreateThread = styled.a`
   color: white;
   right: 0;
-
 `
-
-export default Menu
