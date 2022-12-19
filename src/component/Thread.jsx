@@ -13,7 +13,7 @@ export const Thread = () => {
 	const location = useLocation()
 	const [title] = useState(location.state)
 	const [posts, setPosts] = useState([])
-	const [posting, setPosting] = useState("")
+	const [postingContent, setPosting] = useState("")
 	const url = `${baseUrl}/threads/${thread_id}/posts`
 
 	const onChangePost = useCallback((e) => {
@@ -30,9 +30,9 @@ export const Thread = () => {
 	}, [url])
 
 	const postingSubmit = () => {
-		axios.post(url, { post: posting }).then(() => {
+		setPosts([{ id: Math.random(), post: postingContent }, ...posts])
+		axios.post(url, { post: postingContent }).then(() => {
 			setPosting("")
-			getPosts()
 		}).catch(err => {
 			console.error(err)
 		})
@@ -71,9 +71,9 @@ export const Thread = () => {
 				</SPosts>
 				<SForm>
 					<form>
-						<STextarea value={posting} onChange={onChangePost} placeholder="投稿しよう！" />
+						<STextarea value={postingContent} onChange={onChangePost} placeholder="投稿しよう！" />
 					</form>
-					<SButton disabled={posting === ""} onClick={postingSubmit}>投稿</SButton>
+					<SButton disabled={postingContent === ""} onClick={postingSubmit}>投稿</SButton>
 				</SForm>
 			</SContents>
 		</>
